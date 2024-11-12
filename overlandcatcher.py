@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify, make_response
 
 app = Flask(__name__)
 
@@ -10,9 +10,13 @@ def hello_world():
 def json():
     if request.is_json:
         req = request.get_json()
-        print(type(req))
-        print(req)
-        return "JSON recd!", 200
+        response = {
+                "message": "JSON recd",
+                "name": req.get("name")
+        }
+        res = make_response(jsonify(response),200)
+        return res 
     else:
-        return "No JSON recd", 400
+        res = make_response(jsonify({"message": "No JSON recd"}), 418) 
+        return res 
 
