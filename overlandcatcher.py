@@ -16,19 +16,16 @@ def json():
                     "type": "Feature",
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [
-                            -122.030581, 
-                            37.331800
-                        ]
+                        "coordinates": [-122.0, 37.33]
                     },
                     "properties": {
-                        "timestamp": "2015-10-01T08:00:00-0700", 
+                        "timestamp": "2015-10-01T08:00:00-0700",
                         "altitude": 0,
                         "speed": 4,
                         "horizontal_accuracy": 30,
                         "vertical_accuracy": -1,
                         "motion": ["driving","stationary"],
-                        "pauses": false,
+                        "pauses": "false",
                         "activity": "other_navigation",
                         "desired_accuracy": 100,
                         "deferred": 1000,
@@ -42,9 +39,15 @@ def json():
                 }
             ]
         }
+#incoming = {
+#                "car": "chevy",
+#                "color": "blue"
+#        }
         res = make_response(jsonify(incoming),200)
-        return res 
+#        return "JSON recd!", 200
+        return res
     else:
-        res = make_response(jsonify({"message": "No JSON recd"}), 418) 
-        return res 
+#       res = make_response(jsonify({"message": "No JSON recd"}), 418) 
+        return "No JSON recd", 418 
+#        return res 
                         
